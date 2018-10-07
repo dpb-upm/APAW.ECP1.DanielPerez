@@ -50,4 +50,8 @@ public class Servidor {
     public void setArchivos(Map<String, Archivo> archivos) {
         this.archivos = archivos;
     }
+
+    public void setArchivo(Archivo archivo) {
+        this.archivos.put(archivo.getId(), archivo);
+    }
 }

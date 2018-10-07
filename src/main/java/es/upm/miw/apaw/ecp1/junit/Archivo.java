@@ -3,10 +3,10 @@ package es.upm.miw.apaw.ecp1.junit;
 public class Archivo {
 
     private String id;
-    private Integer tamanio;
+    private float tamanio;
     private String descripcion;
 
-    public Archivo(String id, Integer tamanio, String descripcion) {
+    public Archivo(String id, float tamanio, String descripcion) {
         this.id = id;
         this.tamanio = tamanio;
         this.descripcion = descripcion;
@@ -16,11 +16,11 @@ public class Archivo {
         return id;
     }
 
-    public Integer getTamanio() {
+    public float getTamanio() {
         return tamanio;
     }
 
-    public void setTamanio(Integer tamanio) {
+    public void setTamanio(float tamanio) {
         this.tamanio = tamanio;
     }
 
