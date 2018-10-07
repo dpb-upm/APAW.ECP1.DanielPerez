@@ -9,6 +9,10 @@ public class Propietario {
     private int edad;
     private LocalDateTime nacimiento;
 
+    public Propietario(String id) {
+        this.id = id;
+    }
+
     public Propietario(String id, String nombre, int edad, LocalDateTime nacimiento) {
         this.id = id;
         this.nombre = nombre;
@@ -45,6 +49,39 @@ public class Propietario {
     }
 
     public boolean equals(Propietario propietario){
-        return this.id == propietario.getId() && this.getNombre() == propietario.getNombre() & this.getEdad() == propietario.getEdad();
+        return this.id == propietario.getId() && this.getNombre() == propietario.getNombre() & this.getEdad() == propietario.getEdad() && this.getNacimiento().isEqual(propietario.getNacimiento());
+    }
+
+    static class Builder {
+
+        private Propietario propietario;
+
+        public Builder id(String id) {
+            assert id != null;
+            propietario = new Propietario(id);
+            return this;
+        }
+
+        public Builder nombre(String nombre) {
+            assert nombre != null;
+            propietario.setNombre(nombre);
+            return this;
+        }
+
+        public Builder edad(int edad) {
+            assert edad >= 0;
+            propietario.setEdad(edad);
+            return this;
+        }
+
+        public Builder nacimiento(String fecha) {
+            assert fecha != null;
+            propietario.setNacimiento(DateUtil.getFormatedDate("1988-05-10 00:00"));
+            return this;
+        }
+
+        public Propietario build() {
+            return propietario;
+        }
     }
 }
