@@ -1,12 +1,14 @@
 package es.upm.miw.apaw.ecp1.junit;
 
+import java.util.List;
+
 public class DirectorioComposite extends ArchivoComponent {
 
-    private java.util.List<ArchivoComponent> list;
+    private List<ArchivoComponent> list;
 
     public DirectorioComposite() {
         if(this.list == null)
-            this.list = new java.util.ArrayList<>();
+            this.list = new java.util.ArrayList<ArchivoComponent>();
     }
 
     @Override
@@ -20,8 +22,21 @@ public class DirectorioComposite extends ArchivoComponent {
     }
 
     @Override
+    protected void addAllChildren(List<ArchivoComponent> list) {
+        for (ArchivoComponent component : this.list) {
+            component.addAllChildren(list);
+            list.add(component);
+        }
+    }
+
+    @Override
     public void remove(ArchivoComponent ac) {
         list.remove(ac);
+    }
+
+    @Override
+    public int total() {
+        return this.list.size();
     }
 
     @Override
