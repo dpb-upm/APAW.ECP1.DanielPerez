@@ -11,11 +11,24 @@ public class Servidor {
     private Propietario propietario;
     private Map<String, Archivo> archivos;
 
+    public Servidor(){
+        this.lleno = false;
+        this.createArchivo();
+    }
+
     public Servidor(String id, TipoServidor tipo, Propietario propietario) {
         this.id = id;
         this.tipo = tipo;
         this.lleno = false;
         this.propietario = propietario;
+        this.createArchivo();
+    }
+
+    public void borrarArchivos() {
+        this.archivos.clear();
+    }
+
+    private void createArchivo(){
         this.archivos = new HashMap<>();
     }
 
@@ -52,6 +65,7 @@ public class Servidor {
     }
 
     public void setArchivo(Archivo archivo) {
+        assert archivo != null;
         this.archivos.put(archivo.getId(), archivo);
     }
 }

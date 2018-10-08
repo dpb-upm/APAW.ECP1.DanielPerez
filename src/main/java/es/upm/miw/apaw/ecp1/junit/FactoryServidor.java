@@ -13,6 +13,7 @@ public class FactoryServidor {
     }
 
     public void borrarArchivos() {
+        this.servidor.borrarArchivos();
     }
 
     public Servidor getServidor() {
