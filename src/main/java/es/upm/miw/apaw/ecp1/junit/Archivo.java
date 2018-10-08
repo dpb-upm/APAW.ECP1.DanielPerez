@@ -3,8 +3,12 @@ package es.upm.miw.apaw.ecp1.junit;
 public class Archivo {
 
     private String id;
-    private float tamanio;
     private String descripcion;
+    private float tamanio;
+
+    public Archivo(String id){
+        this.id = id;
+    }
 
     public Archivo(String id, float tamanio, String descripcion) {
         this.id = id;
@@ -16,6 +20,14 @@ public class Archivo {
         return id;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     public float getTamanio() {
         return tamanio;
     }
@@ -24,11 +36,30 @@ public class Archivo {
         this.tamanio = tamanio;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
+    static class Builder {
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+        private Archivo archivo;
+
+        public Builder id(String id) {
+            assert id != null;
+            archivo = new Archivo(id);
+            return this;
+        }
+
+        public Builder descripcion(String nombre) {
+            assert nombre != null;
+            archivo.setDescripcion(nombre);
+            return this;
+        }
+
+        public Builder tamanio(int tamanio){
+            assert tamanio > 0;
+            archivo.setTamanio(tamanio);
+            return this;
+        }
+
+        public Archivo build() {
+            return archivo;
+        }
     }
 }
