@@ -28,13 +28,13 @@ public class ServidorTest {
         Propietario propietario = new Propietario("1", "Daniel", 30, localDateTime);
         assertEquals("1", this.servidor.getId());
         assertEquals(TipoServidor.WEB, this.servidor.getTipo());
-        assertTrue(this.servidor.getPropietario().equals(propietario));
+        assertTrue(this.servidor.getPropietario().iguales(propietario));
         assertTrue(!this.servidor.isLleno());
         assertTrue(this.servidor.getArchivos().size() == 0);
 
         Propietario propietario2 = new Propietario("2", "Daniel", 35, localDateTime);
         this.servidor.setPropietario(propietario2);
-        assertTrue(!this.servidor.getPropietario().equals(propietario));
+        assertTrue(!this.servidor.getPropietario().iguales(propietario));
 
         this.servidor.setTipo(TipoServidor.CORREO);
         assertNotEquals(TipoServidor.WEB, this.servidor.getTipo());

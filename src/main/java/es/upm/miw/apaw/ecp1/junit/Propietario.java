@@ -48,8 +48,8 @@ public class Propietario {
         this.nacimiento = nacimiento;
     }
 
-    public boolean equals(Propietario propietario){
-        return this.id == propietario.getId() && this.getNombre() == propietario.getNombre() & this.getEdad() == propietario.getEdad() && this.getNacimiento().isEqual(propietario.getNacimiento());
+    public boolean iguales(Propietario propietario){
+        return this.id == propietario.getId() && this.getNombre() == propietario.getNombre() && this.getEdad() == propietario.getEdad() && this.getNacimiento().isEqual(propietario.getNacimiento());
     }
 
     static class Builder {

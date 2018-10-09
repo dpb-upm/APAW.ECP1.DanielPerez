@@ -39,8 +39,8 @@ public class PropietarioTest {
     @Test
     void testBuilder() {
         Propietario propietarioBuilder = new Propietario.Builder().id("1").nombre("Daniel").edad(30).nacimiento("1988-05-10 00:00").build();
-        assertTrue(this.propietario.equals(propietarioBuilder));
+        assertTrue(this.propietario.iguales(propietarioBuilder));
         Propietario propietarioBuilder2 = new Propietario.Builder().id("2").nombre("Daniel").edad(35).nacimiento("1988-05-10 00:00").build();
-        assertTrue(!this.propietario.equals(propietarioBuilder2));
+        assertTrue(!this.propietario.iguales(propietarioBuilder2));
     }
 }

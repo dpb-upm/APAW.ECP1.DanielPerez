@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class Observable<T> {
 
-    private Set<Observer<T>> observers = new HashSet<Observer<T>>();
+    private Set<Observer<T>> observers = new HashSet<>();
 
     public void addObserver(Observer observador) {
         this.observers.add(observador);

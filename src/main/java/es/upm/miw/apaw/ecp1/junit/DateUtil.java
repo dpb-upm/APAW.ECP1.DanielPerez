@@ -5,9 +5,12 @@ import java.time.format.DateTimeFormatter;
 
 class DateUtil {
 
+    private DateUtil() {
+        throw new IllegalStateException("Utility class");
+    }
+
     static LocalDateTime getFormatedDate(String fecha) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        LocalDateTime localDateTime = LocalDateTime.parse(fecha, formatter);
-        return localDateTime;
+        return LocalDateTime.parse(fecha, formatter);
     }
 }
