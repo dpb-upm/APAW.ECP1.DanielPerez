@@ -3,7 +3,7 @@ package es.upm.miw.apaw.ecp1.junit;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Servidor {
+public class Servidor implements Observer<Archivo> {
 
     private String id;
     private TipoServidor tipo;
@@ -67,5 +67,11 @@ public class Servidor {
     public void setArchivo(Archivo archivo) {
         assert archivo != null;
         this.archivos.put(archivo.getId(), archivo);
+    }
+
+    @Override
+    public void update(Archivo object) {
+        object.setDescripcion(object.getDescripcion()+" : NOTIFIED");
+        this.archivos.put(object.getId(), object);
     }
 }
