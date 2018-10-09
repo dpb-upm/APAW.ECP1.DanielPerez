@@ -1,18 +1,14 @@
 package es.upm.miw.apaw.ecp1.junit;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+public interface ArchivoComponent {
 
-public abstract class ArchivoComponent {
+    void add(ArchivoComponent cc);
 
-    public abstract void add(ArchivoComponent cc);
+    boolean isComposite();
 
-    public abstract boolean isComposite();
+    void remove(ArchivoComponent cc);
 
-    public abstract void remove(ArchivoComponent cc);
+    int total();
 
-    public abstract int total();
-
-    public abstract String view();
+    String view();
 }

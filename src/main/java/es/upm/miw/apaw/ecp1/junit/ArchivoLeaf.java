@@ -1,8 +1,6 @@
 package es.upm.miw.apaw.ecp1.junit;
 
-import java.util.List;
-
-public class ArchivoLeaf extends ArchivoComponent {
+public class ArchivoLeaf implements ArchivoComponent {
 
     private String id;
     private float tamanio;

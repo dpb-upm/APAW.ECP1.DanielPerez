@@ -2,9 +2,9 @@ package es.upm.miw.apaw.ecp1.junit;
 
 import java.util.List;
 
-public class DirectorioComposite extends ArchivoComponent {
+public class DirectorioComposite implements ArchivoComponent {
 
-    public String name;
+    private String name;
     private List<ArchivoComponent> list;
 
     public DirectorioComposite(String name) {
