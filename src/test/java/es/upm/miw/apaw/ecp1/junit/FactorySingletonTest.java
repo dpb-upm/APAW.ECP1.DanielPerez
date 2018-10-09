@@ -6,11 +6,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class FactoryTest {
+public class FactorySingletonTest {
 
     //@Test
     void testConstructor() {
-        FactoryServidor factory = FactoryServidor.getFactory();
+        FactorySingletonServidor factory = FactorySingletonServidor.getFactory();
         factory.getFactory().addArchivo(new Archivo.Builder().id("1").descripcion("Archivo de prueba").tamanio(10).build());
         factory.addArchivo(new Archivo.Builder().id("2").descripcion("Archivo de prueba 2").tamanio(10).build());
         assertEquals(2, factory.getServidor().getArchivos().size());
@@ -22,7 +22,7 @@ public class FactoryTest {
     @Test
     void testObservable() {
 
-        FactoryServidor factory = FactoryServidor.getFactory();
+        FactorySingletonServidor factory = FactorySingletonServidor.getFactory();
         Servidor servidor = new Servidor();
 
         factory.addObserver(servidor);

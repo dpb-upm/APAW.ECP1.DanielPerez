@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import java.util.Iterator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ArchivoCompositeTest {
 
@@ -15,34 +17,48 @@ public class ArchivoCompositeTest {
 
     @BeforeEach
     void before() {
-        this.root = new DirectorioComposite();
-        this.leaf = new ArchivoLeaf("1", 1, "Archivo 1 leaf");
-        this.root.add(this.leaf);
+        DirectorioComposite directorioComposite = new DirectorioComposite("Directorio 1 raiz");
+        this.leaf = new ArchivoLeaf("1 raiz", 1, "Archivo 1 leaf raiz");
+        directorioComposite.add(this.leaf);
 
-        this.root.add(new DirectorioComposite());
-        this.root.add(new ArchivoLeaf("1", 2, "Archivo 1 comp"));
-        this.root.add(new ArchivoLeaf("2", 3, "Archivo 2 comp"));
-        this.root.add(new ArchivoLeaf("3", 4, "Archivo 3 comp"));
+        this.root = directorioComposite;
 
-        this.root.add(new DirectorioComposite());
-        this.leaf = new ArchivoLeaf("2", 5, "Archivo 2 leaf");
-        this.root.add(this.leaf);
+        this.tree = new DirectorioComposite("Directorio 2");
+        this.tree.add(new ArchivoLeaf("1 dir 2", 2, "Archivo 1 comp"));
+        this.tree.add(new ArchivoLeaf("2 dir 2", 3, "Archivo 2 comp"));
+        this.tree.add(new ArchivoLeaf("3 dir 2", 4, "Archivo 3 comp"));
+
+        this.root.add(this.tree);
     }
 
     @Test
     void testComposite() {
-        int sumLeaf = 0;
-        int sumTree = 0;
-        for (Iterator<ArchivoComponent> it = this.root.iterator(); it.hasNext(); ) {
-            if(it.next().isComposite()){
-                sumTree++;
-            } else {
-                sumLeaf++;
-            }
-        }
+        assertEquals(2, this.root.total());
+        assertEquals(1, this.leaf.total());
+        assertEquals(3, this.tree.total());
+    }
 
-        assertEquals(7, this.root.total());
-        assertEquals(5, sumLeaf);
-        assertEquals(3, sumTree);
+    @Test
+    void testIsComposite(){
+        assertTrue(this.root.isComposite());
+        assertTrue(this.tree.isComposite());
+    }
+
+    @Test
+    void testIsNotComposite(){
+        assertFalse(this.leaf.isComposite());
+    }
+
+    @Test
+    void testView(){
+        assertEquals("Leaf 1 raiz", this.leaf.view());
+    }
+
+    @Test
+    void testRemove(){
+        this.root.remove(this.leaf);
+        assertEquals(1, this.root.total());
+        assertEquals(1, this.leaf.total());
+        assertEquals(3, this.tree.total());
     }
 }

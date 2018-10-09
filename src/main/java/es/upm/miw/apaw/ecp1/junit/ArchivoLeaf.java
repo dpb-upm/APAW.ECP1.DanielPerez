@@ -25,11 +25,6 @@ public class ArchivoLeaf extends ArchivoComponent {
     }
 
     @Override
-    protected void addAllChildren(List<ArchivoComponent> list) {
-        // No se implementa
-    }
-
-    @Override
     public void remove(ArchivoComponent cc) {
         // Es una hoja y no se implementa
     }
@@ -41,6 +36,6 @@ public class ArchivoLeaf extends ArchivoComponent {
 
     @Override
     public String view() {
-        return this.descripcion;
+        return "Leaf " + this.id;
     }
 }

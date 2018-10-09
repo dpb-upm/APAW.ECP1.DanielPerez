@@ -1,13 +1,13 @@
 package es.upm.miw.apaw.ecp1.junit;
 
-public class FactoryServidor extends Observable<Archivo> {
+public class FactorySingletonServidor extends Observable<Archivo> {
 
-    private static FactoryServidor factoryServidor;
+    private static FactorySingletonServidor factoryServidor;
     private Servidor servidor;
 
-    public static FactoryServidor getFactory(){
+    public static FactorySingletonServidor getFactory(){
         if(factoryServidor == null){
-            factoryServidor = new FactoryServidor();
+            factoryServidor = new FactorySingletonServidor();
         }
         return factoryServidor;
     }

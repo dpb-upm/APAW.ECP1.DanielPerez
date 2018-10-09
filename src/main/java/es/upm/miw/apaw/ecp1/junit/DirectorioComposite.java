@@ -4,11 +4,12 @@ import java.util.List;
 
 public class DirectorioComposite extends ArchivoComponent {
 
+    public String name;
     private List<ArchivoComponent> list;
 
-    public DirectorioComposite() {
-        if(this.list == null)
-            this.list = new java.util.ArrayList<ArchivoComponent>();
+    public DirectorioComposite(String name) {
+        this.name = name;
+        this.list = new java.util.ArrayList<>();
     }
 
     @Override
@@ -19,14 +20,6 @@ public class DirectorioComposite extends ArchivoComponent {
     @Override
     public boolean isComposite() {
         return true;
-    }
-
-    @Override
-    protected void addAllChildren(List<ArchivoComponent> list) {
-        for (ArchivoComponent component : this.list) {
-            component.addAllChildren(list);
-            list.add(component);
-        }
     }
 
     @Override
@@ -41,10 +34,6 @@ public class DirectorioComposite extends ArchivoComponent {
 
     @Override
     public String view() {
-        StringBuilder result = new StringBuilder();
-        for (ArchivoComponent item : list) {
-            result.append(item.view()+ "\n");
-        }
-        return result.toString();
+        return this.name;
     }
 }

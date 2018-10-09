@@ -10,15 +10,6 @@ public abstract class ArchivoComponent {
 
     public abstract boolean isComposite();
 
-    public Iterator<ArchivoComponent> iterator() {
-        List<ArchivoComponent> list = new LinkedList<>();
-        addAllChildren(list);
-        list.add(this);
-        return list.iterator();
-    }
-
-    protected abstract void addAllChildren(List<ArchivoComponent> list);
-
     public abstract void remove(ArchivoComponent cc);
 
     public abstract int total();
