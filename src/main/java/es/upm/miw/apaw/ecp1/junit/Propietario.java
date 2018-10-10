@@ -9,11 +9,32 @@ public class Propietario {
     private int edad;
     private LocalDateTime nacimiento;
 
+    private StrategyPropietario strategy;
+
+    public void setStrategyA(){
+        StrategyPropietarioInterface strategyPropietario = new StrategyPropietarioA();
+        this.strategy.setStrategy(strategyPropietario);
+    }
+
+    public void setStrategyB(){
+        StrategyPropietarioInterface strategyPropietario = new StrategyPropietarioB();
+        this.strategy.setStrategy(strategyPropietario);
+    }
+
+    public void setStrategyDefault(){
+        StrategyPropietarioInterface strategyPropietario = new StrategyPropietarioDefault();
+        this.strategy.setStrategy(strategyPropietario);
+    }
+
     public Propietario(String id) {
+        this.strategy = new StrategyPropietario();
+        this.strategy.setStrategy(new StrategyPropietarioDefault());
         this.id = id;
     }
 
     public Propietario(String id, String nombre, int edad, LocalDateTime nacimiento) {
+        this.strategy = new StrategyPropietario();
+        this.strategy.setStrategy(new StrategyPropietarioDefault());
         this.id = id;
         this.nombre = nombre;
         this.edad = edad;
@@ -25,7 +46,8 @@ public class Propietario {
     }
 
     public String getNombre() {
-        return nombre;
+        String n = nombre + strategy.getTipoStrategy();
+        return n;
     }
 
     public void setNombre(String nombre) {
@@ -49,7 +71,7 @@ public class Propietario {
     }
 
     public boolean iguales(Propietario propietario){
-        return this.id == propietario.getId() && this.getNombre() == propietario.getNombre() && this.getEdad() == propietario.getEdad() && this.getNacimiento().isEqual(propietario.getNacimiento());
+        return this.id.equals(propietario.getId()) && this.getNombre().equals(propietario.getNombre()) && this.getEdad() == propietario.getEdad() && this.getNacimiento().isEqual(propietario.getNacimiento());
     }
 
     static class Builder {
@@ -59,6 +81,8 @@ public class Propietario {
         public Builder id(String id) {
             assert id != null;
             propietario = new Propietario(id);
+            propietario.strategy = new StrategyPropietario();
+            propietario.strategy.setStrategy(new StrategyPropietarioDefault());
             return this;
         }
 
