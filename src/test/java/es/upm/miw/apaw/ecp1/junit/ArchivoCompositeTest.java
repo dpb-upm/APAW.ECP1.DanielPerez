@@ -50,6 +50,7 @@ public class ArchivoCompositeTest {
     @Test
     void testView(){
         assertEquals("Leaf 1 raiz", this.leaf.view());
+        assertEquals("Directorio 2", this.tree.view());
     }
 
     @Test

@@ -46,8 +46,7 @@ public class Propietario {
     }
 
     public String getNombre() {
-        String n = nombre + strategy.getTipoStrategy();
-        return n;
+        return nombre + strategy.getTipoStrategy();
     }
 
     public void setNombre(String nombre) {
