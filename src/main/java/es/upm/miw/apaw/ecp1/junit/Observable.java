@@ -15,7 +15,7 @@ public class Observable<T> {
         this.observers.remove(observador);
     }
 
-    public void notify(T object){
+    public void notifyObservers(T object){
         for (Observer<T> observer : observers) {
             observer.update(object);
         }

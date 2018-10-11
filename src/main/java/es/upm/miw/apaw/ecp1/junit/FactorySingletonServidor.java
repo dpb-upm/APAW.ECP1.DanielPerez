@@ -28,6 +28,6 @@ public class FactorySingletonServidor extends Observable<Archivo> {
             this.servidor = new Servidor();
         }
         this.servidor.setArchivo(archivo);
-        this.notify(archivo);
+        this.notifyObservers(archivo);
     }
 }
