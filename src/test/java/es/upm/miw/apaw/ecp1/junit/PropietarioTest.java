@@ -43,4 +43,16 @@ public class PropietarioTest {
         Propietario propietarioBuilder2 = new Propietario.Builder().id("2").nombre("Daniel").edad(35).nacimiento("1988-05-10 00:00").build();
         assertTrue(!this.propietario.iguales(propietarioBuilder2));
     }
+
+
+    @Test
+    void testDateUtil(){
+        boolean throwException = false;
+        try{
+            DateUtil du = new DateUtil();
+        } catch(IllegalStateException ex){
+            throwException = true;
+        }
+        assertTrue(throwException);
+    }
 }

@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 
 class DateUtil {
 
-    private DateUtil() {
+    DateUtil() {
         throw new IllegalStateException("Utility class");
     }
 
