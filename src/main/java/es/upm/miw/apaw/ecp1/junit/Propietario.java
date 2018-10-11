@@ -95,7 +95,7 @@ public class Propietario {
         }
 
         public Builder nacimiento(String fecha) {
-            propietario.setNacimiento(DateUtil.getFormatedDate("1988-05-10 00:00"));
+            propietario.setNacimiento(DateUtil.getFormatedDate(fecha));
             return this;
         }
 
