@@ -2,14 +2,10 @@ package es.upm.miw.apaw.ecp1.junit;
 
 public class ArchivoLeaf implements ArchivoComponent {
 
-    private String id;
-    private float tamanio;
-    private String descripcion;
+    private Archivo archivo;
 
     public ArchivoLeaf(String id, int tamanio, String descripcion) {
-        this.id = id;
-        this.tamanio = tamanio;
-        this.descripcion = descripcion;
+        this.archivo = new Archivo(id, tamanio, descripcion);
     }
 
     @Override
@@ -34,6 +30,6 @@ public class ArchivoLeaf implements ArchivoComponent {
 
     @Override
     public String view() {
-        return "Leaf " + this.id;
+        return "Leaf " + this.archivo.getId();
     }
 }
