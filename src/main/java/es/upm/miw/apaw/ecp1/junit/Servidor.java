@@ -65,7 +65,6 @@ public class Servidor implements Observer<Archivo> {
     }
 
     public void setArchivo(Archivo archivo) {
-        assert archivo != null;
         this.archivos.put(archivo.getId(), archivo);
     }
 

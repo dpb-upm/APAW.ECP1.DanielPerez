@@ -78,7 +78,6 @@ public class Propietario {
         private Propietario propietario;
 
         public Builder id(String id) {
-            assert id != null;
             propietario = new Propietario(id);
             propietario.strategy = new StrategyPropietario();
             propietario.strategy.setStrategy(new StrategyPropietarioDefault());
@@ -86,19 +85,16 @@ public class Propietario {
         }
 
         public Builder nombre(String nombre) {
-            assert nombre != null;
             propietario.setNombre(nombre);
             return this;
         }
 
         public Builder edad(int edad) {
-            assert edad >= 0;
             propietario.setEdad(edad);
             return this;
         }
 
         public Builder nacimiento(String fecha) {
-            assert fecha != null;
             propietario.setNacimiento(DateUtil.getFormatedDate("1988-05-10 00:00"));
             return this;
         }

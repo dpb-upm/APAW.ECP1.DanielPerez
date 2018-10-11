@@ -41,19 +41,16 @@ public class Archivo {
         private Archivo archivo;
 
         public Builder id(String id) {
-            assert id != null;
             archivo = new Archivo(id);
             return this;
         }
 
         public Builder descripcion(String nombre) {
-            assert nombre != null;
             archivo.setDescripcion(nombre);
             return this;
         }
 
         public Builder tamanio(int tamanio){
-            assert tamanio > 0;
             archivo.setTamanio(tamanio);
             return this;
         }
